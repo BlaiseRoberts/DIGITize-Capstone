@@ -1,0 +1,89 @@
+<div class="container">
+	<div class="card-panel hoverable deep-purple lighten-3">
+		<h1>Welcome {{profile.firstName}} {{profile.lastName}}</h1>
+		<h3 class="right-align" ng-show="profile.location">at {{profile.location}}</h3>
+		<button data-target="editProfileModal" class="modal-trigger btn waves-effect waves-light">Edit Profile</buttom>
+	</div>
+</div>
+
+
+<div id="editProfileModal" class="modal modal-fixed-footer">
+		<div class="modal-content">
+		  <form>
+		  	<legend class="modal-header">Profile Info</legend>
+			<div class="row">
+				<div class="input-field col s6">
+				  <input ng-model="profile.firstName" id="first_nameEdit" type="text" class="validate">
+				  <label class="active" for="first_nameEdit">First Name</label>
+				</div>
+				<div class="input-field col s6">
+				  <input ng-model="profile.lastName" id="last_nameEdit" type="text" class="validate">
+				  <label class="active" for="last_nameEdit">Last Name</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s6">
+					<input ng-model="profile.birthday" type="text" class="datepicker">
+					<label class="active">Birthday</label>
+				</div>
+				<div class="col s3">
+					<p>
+				      <input ng-model="profile.sex" value="male" class="with-gap" name="sex" type="radio" id="maleEdit"  />
+				      <label for="maleEdit">Male</label>
+				    </p>
+				</div>
+				<div class="col s3">
+				    <p>
+				      <input ng-model="profile.sex" value="female" class="with-gap" name="sex" type="radio" id="femaleEdit"  />
+				      <label for="femaleEdit">Female</label>
+				    </p>
+			    </div>
+			</div>
+			<div class="row">
+					<p>Are you a Doctor or Patient?</p>
+					<p>
+				      <input ng-model="profile.type" value="doctor" class="with-gap" name="type" type="radio" id="doctorEdit"  />
+				      <label for="doctorEdit">Doctor</label>
+				    </p>
+				    <p>
+				      <input ng-model="profile.type" value="patient" class="with-gap" name="type" type="radio" id="patientEdit"  />
+				      <label for="patientEdit">Patient</label>
+				    </p>
+			</div>
+			<div ng-show="profile.type === 'patient'" class="row">
+				<div class="col s6">
+					<p class="right-align">Dominant Hand:</p>
+				</div>
+				<div class="col s3">
+					<p>
+				      <input ng-model="profile.dominantHand" value="left-handed" class="with-gap" name="hand" type="radio" id="leftHandEdit"  />
+				      <label for="leftHandEdit">Left Hand</label>
+				    </p>
+				</div>
+				<div class="col s3">
+				    <p>
+				      <input ng-model="profile.dominantHand" value="right-handed" class="with-gap" name="hand" type="radio" id="rightHandEdit"  />
+				      <label for="rightHandEdit">Right Hand</label>
+				    </p>
+			    </div>
+			</div>
+			<div ng-show="profile.type === 'doctor'" class="row">
+				<div class="row">
+					<div class="input-field col s12">
+					  <input ng-model="profile.location" id="locationEdit" type="text">
+					  <label class="active" for="locationEdit">Working Location</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12">
+					  <input ng-model="profile.background" id="backgroundEdit" type="text">
+					  <label class="active" for="backgroundEdit">Background</label>
+					</div>
+				</div>
+			</div>
+		  </form>
+		</div>
+		<div class="modal-footer">
+		  <button ng-click="patchProfile()" class="modal-action modal-close waves-effect waves-green btn-flat">Submit</button>
+		</div>
+	</div>
