@@ -1,0 +1,131 @@
+
+<div ng-controller="NavbarCtrl">
+	  <!-- Modal Structure -->
+  <div id="loginModal" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h3 class="modal-header">Login/Register</h3>
+      <div class="row">
+	      <form class="col s12 container">
+	      	<div class="row">
+		        <div class="input-field col s12">
+		          <input ng-model="account.email" id="email" type="email" class="validate">
+		          <label for="email">Email</label>
+		        </div>
+		      </div>
+		      <div class="row">
+		        <div class="input-field col s12">
+		          <input ng-model="account.password" id="password" type="password" class="validate">
+		          <label for="password">Password</label>
+		        </div>
+		      </div>
+	      </form>
+      </div>	
+    </div>
+    <div class="modal-footer">
+		<button class="modal-action modal-close waves-effect waves-red btn-flat">Back</button>
+      <button ng-click="register()" class="modal-action modal-close waves-effect waves-green btn-flat">Register</button>
+      <button ng-click="login()" class="modal-action modal-close waves-effect waves-green btn-flat">Login</button>
+      <button ng-click="loginGoogle()" class="modal-action modal-close waves-effect waves-green btn-flat">Sign in with Google</button>
+    </div>
+  </div>
+
+	
+	<div id="profileModal" class="modal modal-fixed-footer">
+		<div class="modal-content">
+		  <form>
+		  	<legend class="modal-header">Profile Info</legend>
+			<div class="row">
+				<div class="input-field col s6">
+				  <input ng-model="profile.firstName" id="first_name" type="text" class="validate">
+				  <label for="first_name">First Name</label>
+				</div>
+				<div class="input-field col s6">
+				  <input ng-model="profile.lastName" id="last_name" type="text" class="validate">
+				  <label for="last_name">Last Name</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s6">
+					<input ng-model="profile.birthday" type="text" class="datepicker">
+					<label>Birthday</label>
+				</div>
+				<div class="col s3">
+					<p>
+				      <input ng-model="profile.sex" value="male" class="with-gap" name="sex" type="radio" id="male"  />
+				      <label for="male">Male</label>
+				    </p>
+				</div>
+				<div class="col s3">
+				    <p>
+				      <input ng-model="profile.sex" value="female" class="with-gap" name="sex" type="radio" id="female"  />
+				      <label for="female">Female</label>
+				    </p>
+			    </div>
+			</div>
+			<div class="row">
+					<p>Are you a Doctor or Patient?</p>
+					<p>
+				      <input ng-model="profile.type" value="doctor" class="with-gap" name="type" type="radio" id="doctor"  />
+				      <label for="doctor">Doctor</label>
+				    </p>
+				    <p>
+				      <input ng-model="profile.type" value="patient" class="with-gap" name="type" type="radio" id="patient"  />
+				      <label for="patient">Patient</label>
+				    </p>
+			</div>
+			<div ng-show="profile.type === 'patient'" class="row">
+				<div class="col s6">
+					<p class="right-align">Dominant Hand:</p>
+				</div>
+				<div class="col s3">
+					<p>
+				      <input ng-model="profile.dominantHand" value="left-handed" class="with-gap" name="hand" type="radio" id="leftHand"  />
+				      <label for="leftHand">Left Hand</label>
+				    </p>
+				</div>
+				<div class="col s3">
+				    <p>
+				      <input ng-model="profile.dominantHand" value="right-handed" class="with-gap" name="hand" type="radio" id="rightHand"  />
+				      <label for="rightHand">Right Hand</label>
+				    </p>
+			    </div>
+			</div>
+			<div ng-show="profile.type === 'doctor'" class="row">
+				<div class="row">
+					<div class="input-field col s12">
+					  <input ng-model="profile.location" id="location" type="text">
+					  <label for="location">Working Location</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12">
+					  <input ng-model="profile.background" id="background" type="text">
+					  <label for="background">Background</label>
+					</div>
+				</div>
+			</div>
+		  </form>
+		</div>
+		<div class="modal-footer">
+		  <button ng-click="submitProfile()" class="modal-action modal-close waves-effect waves-green btn-flat">Submit</button>
+		</div>
+	</div>
+
+
+
+	<nav class="deep-purple darken-3">
+		<div class="nav-wrapper container">
+		  <a href="#!/" class="brand-logo">DIGITize</a>
+		  <ul id="nav-mobile" class="right hide-on-med-and-down">
+		    <li ng-show="!ifLoggedIn"><a class="modal-trigger waves-effect waves-light" href="#loginModal">Login/Register</a></li>
+		    <li ng-show="ifLoggedIn"><a class="waves-effect waves-light" href="#!/profile">Profile</a></li>
+		    <li ng-show="ifLoggedIn && profile.type === 'doctor'"><a class="waves-effect waves-light" href="#!/">Patients</a></li>
+		    <li ng-show="ifLoggedIn && profile.type === 'patient'"><a class="waves-effect waves-light" href="#!/">Doctors</a></li>
+		    <li ng-show="ifLoggedIn"><a class="waves-effect waves-light" href="#!/">Challenges</a></li>
+		    <li ng-show="ifLoggedIn"><a ng-click="logout()" class="waves-effect waves-light" href="#!/">Logout</a></li>
+		  </ul>
+		</div>
+	</nav>
+
+</div>
+        
