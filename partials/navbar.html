@@ -45,62 +45,34 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="input-field col s6">
+				<div class="input-field col s3">
 					<input ng-model="profile.birthday" type="text" class="datepicker">
 					<label>Birthday</label>
 				</div>
 				<div class="col s3">
 					<p>
-				      <input ng-model="profile.sex" value="male" class="with-gap" name="sex" type="radio" id="male"  />
-				      <label for="male">Male</label>
+				      <input ng-model="profile.discipline" value="OT" class="with-gap" name="sex" type="radio" id="ot"  />
+				      <label for="ot">Occupational Therapy</label>
 				    </p>
 				</div>
 				<div class="col s3">
 				    <p>
-				      <input ng-model="profile.sex" value="female" class="with-gap" name="sex" type="radio" id="female"  />
-				      <label for="female">Female</label>
+				      <input ng-model="profile.discipline" value="PT" class="with-gap" name="sex" type="radio" id="pt"  />
+				      <label for="pt">Physical Therapy</label>
+				    </p>
+			    </div>
+			    <div class="col s3">
+				    <p>
+				      <input ng-model="profile.discipline" value="ST" class="with-gap" name="sex" type="radio" id="st"  />
+				      <label for="st">Speech Therapy</label>
 				    </p>
 			    </div>
 			</div>
 			<div class="row">
-					<p>Are you a Doctor or Patient?</p>
-					<p>
-				      <input ng-model="profile.type" value="doctor" class="with-gap" name="type" type="radio" id="doctor"  />
-				      <label for="doctor">Doctor</label>
-				    </p>
-				    <p>
-				      <input ng-model="profile.type" value="patient" class="with-gap" name="type" type="radio" id="patient"  />
-				      <label for="patient">Patient</label>
-				    </p>
-			</div>
-			<div ng-show="profile.type === 'patient'" class="row">
-				<div class="col s6">
-					<p class="right-align">Dominant Hand:</p>
-				</div>
-				<div class="col s3">
-					<p>
-				      <input ng-model="profile.dominantHand" value="left-handed" class="with-gap" name="hand" type="radio" id="leftHand"  />
-				      <label for="leftHand">Left Hand</label>
-				    </p>
-				</div>
-				<div class="col s3">
-				    <p>
-				      <input ng-model="profile.dominantHand" value="right-handed" class="with-gap" name="hand" type="radio" id="rightHand"  />
-				      <label for="rightHand">Right Hand</label>
-				    </p>
-			    </div>
-			</div>
-			<div ng-show="profile.type === 'doctor'" class="row">
 				<div class="row">
 					<div class="input-field col s12">
 					  <input ng-model="profile.location" id="location" type="text">
 					  <label for="location">Working Location</label>
-					</div>
-				</div>
-				<div class="row">
-					<div class="input-field col s12">
-					  <input ng-model="profile.background" id="background" type="text">
-					  <label for="background">Background</label>
 					</div>
 				</div>
 			</div>
@@ -116,11 +88,16 @@
 	<nav class="deep-purple darken-3">
 		<div class="nav-wrapper container">
 		  <a href="#!/" class="brand-logo">DIGITize</a>
-		  <ul id="nav-mobile" class="right hide-on-med-and-down">
+		  <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+		  <ul class="right hide-on-med-and-down">
 		    <li ng-show="!ifLoggedIn"><a class="modal-trigger waves-effect waves-light" href="#loginModal">Login/Register</a></li>
 		    <li ng-show="ifLoggedIn"><a class="waves-effect waves-light" href="#!/profile">Profile</a></li>
-		    <li ng-show="ifLoggedIn && profile.type === 'doctor'"><a class="waves-effect waves-light" href="#!/">Patients</a></li>
-		    <li ng-show="ifLoggedIn && profile.type === 'patient'"><a class="waves-effect waves-light" href="#!/">Doctors</a></li>
+		    <li ng-show="ifLoggedIn"><a class="waves-effect waves-light" href="#!/">Challenges</a></li>
+		    <li ng-show="ifLoggedIn"><a ng-click="logout()" class="waves-effect waves-light" href="#!/">Logout</a></li>
+		  </ul>
+		  <ul id="nav-mobile" class="side-nav">
+		    <li ng-show="!ifLoggedIn"><a class="modal-trigger waves-effect waves-light" href="#loginModal">Login/Register</a></li>
+		    <li ng-show="ifLoggedIn"><a class="waves-effect waves-light" href="#!/profile">Profile</a></li>
 		    <li ng-show="ifLoggedIn"><a class="waves-effect waves-light" href="#!/">Challenges</a></li>
 		    <li ng-show="ifLoggedIn"><a ng-click="logout()" class="waves-effect waves-light" href="#!/">Logout</a></li>
 		  </ul>

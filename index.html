@@ -3,6 +3,8 @@
 <head>
 	<title>DIGITize</title>
 	<link rel="stylesheet" type="text/css" href="dist/css/materialize.min.css">
+	<link rel='stylesheet' href='lib/node_modules/angular-loading-bar/build/loading-bar.min.css' type='text/css' media='all' />
+  	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body ng-app="RehabApp">
@@ -16,6 +18,8 @@
 	<script type="text/javascript" src="dist/js/materialize.min.js"></script>
 	<script type="text/javascript" src="lib/node_modules/angular/angular.min.js"></script>
 	<script type="text/javascript" src="lib/node_modules/angular-route/angular-route.min.js"></script>
+	<script type="text/javascript" src="lib/node_modules/angular-filter/dist/angular-filter.min.js"></script>
+	<script type='text/javascript' src='lib/node_modules/angular-loading-bar/build/loading-bar.min.js'></script>
 	<script type="text/javascript" src="lib/node_modules/firebase/firebase.js"></script>
 
 	<script type="text/javascript" src="/app/app.js"></script>
@@ -25,7 +29,9 @@
   	<script type="text/javascript" src="app/factories/ProfileFactory.js"></script>
 
   	<script type="text/javascript" src="app/controllers/NavbarCtrl.js"></script>
-  	<script type="text/javascript" src="app/controllers/DocProfileCtrl.js"></script>
+  	<script type="text/javascript" src="app/controllers/ProfileCtrl.js"></script>
+  	<script type="text/javascript" src="app/controllers/SearchCtrl.js"></script>
+  	<script type="text/javascript" src="app/controllers/PatientCtrl.js"></script>
 
 </body>
 </html>

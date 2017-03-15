@@ -1,6 +1,6 @@
 "use strict";
 
-var app = angular.module("RehabApp", ["ngRoute"]);
+var app = angular.module("RehabApp", ["ngRoute", "angular.filter", "angular-loading-bar"]);
 
 app.config(['$routeProvider', function ($routeProvider) {
     $routeProvider.
@@ -8,10 +8,23 @@ app.config(['$routeProvider', function ($routeProvider) {
     }).
     when('/profile',{
         templateUrl: 'partials/profile.html',
-        controller: "DocProfileCtrl"
+        controller: "ProfileCtrl"
     }).
+    when('/patient/:index',{
+        templateUrl: 'partials/patient-profile.html',
+        controller: "PatientCtrl"
+    }).
+    // when('/search',{
+    //     templateUrl: 'partials/search.html',
+    //     controller: "SearchCtrl"
+    // }).
+    // when('/search',{
+    //     templateUrl: 'partials/search.html',
+    //     controller: "SearchCtrl"
+    // }).
     otherwise('/');
 }]);
+
 
 app.run(function ($location, FBCreds) {
     let authConfig = {
