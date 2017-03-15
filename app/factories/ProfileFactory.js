@@ -32,6 +32,38 @@ app.factory('ProfileFactory', function (FBCreds, $q, $http) {
 			});
 		});
 	};
+	let getDoctorProfiles = (user) => {
+		let profileList = [];
+		return $q((resolve, reject)=>{
+			$http.get(`${FBCreds.databaseURL}/profile.json?orderBy="type"&equalTo="doctor"`).then((result)=>{
+				let profileCollection = result.data;
+				Object.keys(profileCollection).forEach((key)=>{
+					profileCollection[key].id = key;
+					profileList.push(profileCollection[key]);
+				});
+				resolve(profileList);
+			})
+			.catch((error)=>{
+				reject(error);
+			});
+		});
+	};
+	let getPatientProfiles = (user) => {
+		let profileList = [];
+		return $q((resolve, reject)=>{
+			$http.get(`${FBCreds.databaseURL}/profile.json?orderBy="type"&equalTo="patient"`).then((result)=>{
+				let profileCollection = result.data;
+				Object.keys(profileCollection).forEach((key)=>{
+					profileCollection[key].id = key;
+					profileList.push(profileCollection[key]);
+				});
+				resolve(profileList);
+			})
+			.catch((error)=>{
+				reject(error);
+			});
+		});
+	};
 
 
 
@@ -40,7 +72,6 @@ app.factory('ProfileFactory', function (FBCreds, $q, $http) {
 
 
 
-
-	return{postNewProfile, getSingleProfile, updateProfile};
+	return{postNewProfile, getSingleProfile, updateProfile, getDoctorProfiles, getPatientProfiles};
 
 });

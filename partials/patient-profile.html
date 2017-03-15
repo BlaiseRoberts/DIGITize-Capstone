@@ -1,0 +1,72 @@
+<div class="container">
+	<div class="card-panel hoverable blue-grey lighten-5">
+		<h4>Room #{{patient.room}} admitted on {{patient.dateAdmit}}</h4>
+		<p class="flow-text">Affected Side:  {{patient.affectedSide}}</p>
+		<p class="flow-text">Dominant Hand:  {{patient.dominantHand}}</p>	
+		<div class="right-align">
+			<button data-target="editPatient" class="modal-trigger btn btn-flat waves-effect waves-green">Edit Patient</button>
+			<button ng-click="removePatient()" class="btn btn-flat waves-effect waves-red">Remove Patient</button>
+		</div>
+	</div>
+</div>
+
+<div id="editPatient" class="modal modal-fixed-footer">
+		<div class="modal-content">
+		  <form>
+		  	<legend class="modal-header">Patient Info</legend>
+			<div class="row">
+				<div class="input-field col s6">
+				  <input ng-model="patient.room" id="room" type="text">
+				  <label class="active" for="room">Room Number</label>
+				</div>
+				<div class="input-field col s6">
+				  <input ng-model="patient.dateAdmit" type="text" class="datepicker">
+				  <label class="active">Date Admitted</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col s6">
+					<p class="right-align">Dominant Hand:</p>
+				</div>
+				<div class="col s3">
+					<p>
+				      <input ng-model="patient.dominantHand" value="Left-handed" class="with-gap" name="hand" type="radio" id="leftHand"  />
+				      <label for="leftHand">Left Hand</label>
+				    </p>
+				</div>
+				<div class="col s3">
+				    <p>
+				      <input ng-model="patient.dominantHand" value="Right-handed" class="with-gap" name="hand" type="radio" id="rightHand"  />
+				      <label for="rightHand">Right Hand</label>
+				    </p>
+			    </div>
+			</div>
+			<div class="row">
+				<div class="col s3">
+					<p class="right-align">Affected Side:</p>
+				</div>
+				<div class="col s3">
+					<p>
+				      <input ng-model="patient.affectedSide" value="Both" class="with-gap" name="side" type="radio" id="bothSides"  />
+				      <label for="bothSides">Both Sides</label>
+				    </p>
+				</div>
+				<div class="col s3">
+				    <p>
+				      <input ng-model="patient.affectedSide" value="Left" class="with-gap" name="side" type="radio" id="leftSide"  />
+				      <label for="leftSide">Left Side</label>
+				    </p>
+			    </div>
+			    <div class="col s3">
+				    <p>
+				      <input ng-model="patient.affectedSide" value="Right" class="with-gap" name="side" type="radio" id="rightSide"  />
+				      <label for="rightSide">Right Side</label>
+				    </p>
+			    </div>
+			</div>
+		  </form>
+		</div>
+		<div class="modal-footer">
+		  <button ng-click="editPatient()" class="modal-action modal-close waves-effect waves-green btn-flat">Submit</button>
+		</div>
+	</div>

@@ -5,6 +5,7 @@ app.controller("NavbarCtrl", function($scope, $window, AuthFactory, ProfileFacto
 ///Initialize
 ///////////////////
 	  $(document).ready(function(){
+	  	$(".button-collapse").sideNav();
 	    $('.modal').modal({dismissible: false});
 	    $('.datepicker').pickadate({
 		    selectMonths: true // Creates a dropdown to control month
@@ -20,14 +21,13 @@ app.controller("NavbarCtrl", function($scope, $window, AuthFactory, ProfileFacto
 		type: ""
 	};
 	$scope.profile = {
+		challenges: [],
 		firstName: null,
 		lastName: null,
 		birthday: null,
 		sex: null,
-		type: null,
-		dominantHand: null,
 		location: null,
-		background: null
+		discipline: null
 	};
 
 	$scope.submitProfile = ()=>{
