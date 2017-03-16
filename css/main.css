@@ -4,4 +4,25 @@
 #add-patient {
   margin-left: 1em; }
 
+.tile {
+  height: 4em;
+  margin: .5em;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.gameButton {
+  height: 25em;
+  border: 5px solid #000;
+  position: relative; }
+
+.label {
+  margin-bottom: 0; }
+
+.buttonLabel {
+  color: #000; }
+
+.nopad {
+  padding: 0 !important; }
+
 /*# sourceMappingURL=main.css.map */

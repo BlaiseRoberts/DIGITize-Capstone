@@ -14,10 +14,10 @@ app.config(['$routeProvider', function ($routeProvider) {
         templateUrl: 'partials/patient-profile.html',
         controller: "PatientCtrl"
     }).
-    // when('/search',{
-    //     templateUrl: 'partials/search.html',
-    //     controller: "SearchCtrl"
-    // }).
+    when('/freeplay',{
+        templateUrl: 'partials/freeplay.html',
+        controller: "FreeplayCtrl"
+    }).
     // when('/search',{
     //     templateUrl: 'partials/search.html',
     //     controller: "SearchCtrl"

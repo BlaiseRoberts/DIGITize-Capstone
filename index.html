@@ -7,7 +7,7 @@
   	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
-<body ng-app="RehabApp">
+<body ng-app="RehabApp" ng-keydown="keyPress($event)">
 
 	<div ng-include="'partials/navbar.html'"></div>
 	<div ng-view></div>
@@ -30,8 +30,8 @@
 
   	<script type="text/javascript" src="app/controllers/NavbarCtrl.js"></script>
   	<script type="text/javascript" src="app/controllers/ProfileCtrl.js"></script>
-  	<script type="text/javascript" src="app/controllers/SearchCtrl.js"></script>
   	<script type="text/javascript" src="app/controllers/PatientCtrl.js"></script>
+  	<script type="text/javascript" src="app/controllers/FreeplayCtrl.js"></script>
 
 </body>
 </html>
