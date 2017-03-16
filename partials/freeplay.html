@@ -1,0 +1,83 @@
+<div>
+<div class="container">
+	<div class="row card-panel hoverable blue-grey lighten-4">
+		<p class="flow-text">Challenge #1 for Right Hand</p>
+		<p>by Blaise Roberts</p>
+	</div>
+
+	<div id="tileOrder" class="row">	
+		<div ng-repeat="item in tileOrder" class="col s1 card-panel tile {{item.color}}">
+			<p class="flow-text center-align ">{{item.value}}</p>
+		</div>
+	</div>
+</div>
+	<div class="row">
+		<div class="nopad col s2 offset-s1">
+			<h4 class="center-align label">1</h4>
+		</div>
+		<div class="nopad col s2">
+			<h4 class="center-align label">2</h4>
+		</div>
+		<div class="nopad col s2">
+			<h4 class="center-align label">3</h4>
+		</div>
+		<div class="nopad col s2">
+			<h4 class="center-align label">4</h4>
+		</div>
+		<div class="nopad col s2">
+			<h4 class="center-align label">5</h4>
+		</div>
+	</div>
+	<div class="row">
+		<div class="nopad col s2 offset-s1">
+			<a ng-click="press1()">
+				<div class="gameButton green accent-3">
+					<h4 class="flow-text buttonLabel center-align">"space"</h4>					
+				</div>
+			</a>
+		</div>
+		<div class="nopad col s2">
+			<a ng-click="press2()">
+				<div class="gameButton yellow">
+					<h4 class="flow-text buttonLabel center-align">"T"</h4>					
+				</div>
+			</a>
+		</div>
+		<div class="nopad col s2">
+			<a ng-click="press3()">
+				<div class="gameButton cyan">
+					<h4 class="flow-text buttonLabel center-align">"7"</h4>					
+				</div>
+			</a>
+		</div>
+		<div class="nopad col s2">
+			<a ng-click="press4()">
+				<div class="gameButton red darken-1">
+					<h4 class="flow-text buttonLabel center-align">"I"</h4>					
+				</div>
+			</a>
+		</div>
+		<div class="nopad col s2">
+			<a ng-click="press5()">
+				<div class="gameButton deep-purple accent-1">
+					<h4 class="flow-text buttonLabel center-align">"L"</h4>
+				</div>
+			</a>
+		</div>
+	</div>
+
+  <div id="completeModal" class="modal">
+    <div class="modal-content">
+      <h4>Challenge Complete</h4>
+      <p>You got {{correct}} out of {{total}} or {{percent}}%</p>
+
+    </div>
+    <div class="modal-footer">
+      <a href="#!/profile" class=" modal-action modal-close waves-effect waves-green btn-flat">Finished</a>
+    </div>
+  </div>
+</div>
+
+
+
+
