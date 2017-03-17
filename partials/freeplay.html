@@ -1,8 +1,11 @@
-<div>
+<div >
 <div class="container">
 	<div class="row card-panel hoverable blue-grey lighten-4">
-		<p class="flow-text">Challenge #1 for Right Hand</p>
-		<p>by Blaise Roberts</p>
+		<p class="flow-text">{{challenge.title}} for {{challenge.type}}</p>
+		<p>by {{profile.firstName}} {{profile.lastName}}</p>
+		<div tabindex="1" ng-keyup="keyPress($event)" class="right-align">
+			<button ng-click="toggleKeys()" class="btn btn-flat waves-effect waves-yellow">click to use keyboard</button>
+		</div>
 	</div>
 
 	<div id="tileOrder" class="row">	
@@ -32,35 +35,35 @@
 		<div class="nopad col s2 offset-s1">
 			<a ng-click="press1()">
 				<div class="gameButton green accent-3">
-					<h4 class="flow-text buttonLabel center-align">"space"</h4>					
+					<h4 ng-show="showKeys" class="flow-text buttonLabel center-align">"space"</h4>					
 				</div>
 			</a>
 		</div>
 		<div class="nopad col s2">
 			<a ng-click="press2()">
 				<div class="gameButton yellow">
-					<h4 class="flow-text buttonLabel center-align">"T"</h4>					
+					<h4 ng-show="showKeys" class="flow-text buttonLabel center-align">"T"</h4>					
 				</div>
 			</a>
 		</div>
 		<div class="nopad col s2">
 			<a ng-click="press3()">
 				<div class="gameButton cyan">
-					<h4 class="flow-text buttonLabel center-align">"7"</h4>					
+					<h4 ng-show="showKeys" class="flow-text buttonLabel center-align">"7"</h4>					
 				</div>
 			</a>
 		</div>
 		<div class="nopad col s2">
 			<a ng-click="press4()">
 				<div class="gameButton red darken-1">
-					<h4 class="flow-text buttonLabel center-align">"I"</h4>					
+					<h4 ng-show="showKeys" class="flow-text buttonLabel center-align">"I"</h4>					
 				</div>
 			</a>
 		</div>
 		<div class="nopad col s2">
 			<a ng-click="press5()">
 				<div class="gameButton deep-purple accent-1">
-					<h4 class="flow-text buttonLabel center-align">"L"</h4>
+					<h4 ng-show="showKeys" class="flow-text buttonLabel center-align">"L"</h4>
 				</div>
 			</a>
 		</div>
@@ -73,7 +76,7 @@
 
     </div>
     <div class="modal-footer">
-      <a href="#!/profile" class=" modal-action modal-close waves-effect waves-green btn-flat">Finished</a>
+      <a href="#!/challenges" class=" modal-action modal-close waves-effect waves-green btn-flat">Finished</a>
     </div>
   </div>
 </div>

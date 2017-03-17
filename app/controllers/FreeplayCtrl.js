@@ -1,6 +1,6 @@
 "use strict";
 	
-app.controller('FreeplayCtrl', function ($scope, $document) {
+app.controller('FreeplayCtrl', function ($scope, $document, AuthFactory, ProfileFactory, $routeParams) {
 ///////////////////
 ///Initialize
 ///////////////////
@@ -8,19 +8,26 @@ app.controller('FreeplayCtrl', function ($scope, $document) {
 		$('.modal').modal();
 	});	
 
-	// $route.reload();
+	let user = AuthFactory.getUser();
+	ProfileFactory.getSingleProfile(user).then((result)=>{
+		let profileId = Object.keys(result)[0];
+		$scope.profile = result[profileId];
+		$scope.challenge = $scope.profile.challenges[$routeParams.gameIndex];
+		$scope.tileOrder = $scope.challenge.tileOrder;
+		$scope.total = $scope.tileOrder.length;
+	});
 
-	$scope.tileOrder = [
-		{value: 4, color: "red darken-1"},
-		{value: 2, color: "yellow"},
-		{value: 3, color: "cyan"},
-		{value: 1, color: "green accent-3"},
-		{value: 5, color: "deep-purple accent-1"}		
-	];
-
-	$scope.total = $scope.tileOrder.length;
+	
+	$scope.showKeys = false;
 	$scope.correct = 0;
 
+	$scope.toggleKeys = ()=>{
+		if (!$scope.showKeys){
+			$scope.showKeys = true;
+		} else{
+			$scope.showKeys = false;
+		}
+	};
 
 	$scope.press1 = ()=>{
 		if($scope.tileOrder[0].value == 1){
@@ -68,32 +75,29 @@ app.controller('FreeplayCtrl', function ($scope, $document) {
 		}
 		$scope.tileOrder.shift();
 		if($scope.tileOrder.length === 0){
-			$scope.percent = ($scope.correct/$scope.total)*100;
+			$scope.percent = Math.floor(($scope.correct/$scope.total)*100);
 			$('#completeModal').modal('open');
 		}
 	};
-
-	$document.keydown((e)=>{
-	    if (e.keyCode == 32) { 
-	       $scope.press1();
-	       $scope.$apply();
+	$scope.keyPress = function(e){
+        if (e.keyCode == 32) { 
+        	e.preventDefault();
+       		$scope.press1();
 	    }
 	    if (e.keyCode == 84) { 
 	       $scope.press2();
-	       $scope.$apply();	    
 	    }
 	    if (e.keyCode == 55) { 
 	       $scope.press3();
-	       $scope.$apply();
 	    }
 	    if (e.keyCode == 73) { 
 	       $scope.press4();
-	       $scope.$apply();
 	    }
 	    if (e.keyCode == 76) { 
 	       $scope.press5();
-	       $scope.$apply();	       
 	    }
-	});
+	};
+
+	
 
 });

@@ -1,0 +1,66 @@
+<div class="col s12 blue-grey lighten-5 card-panel hoverable">
+	<div class="row">
+	    <div class="input-field col s6">
+	      <input ng-model="challenge.title" id="challenge-title" type="text">
+	      <label class="active" for="challenge-title">Challenge Title</label>
+	    </div>
+	    <div class="col s3">
+			<p>
+		      <input ng-model="challenge.type" value="Left Hand" class="with-gap" name="gameType" type="radio" id="leftHandGame"  />
+		      <label for="leftHandGame">For Left Hand</label>
+		    </p>
+		</div>
+		<div class="col s3">
+		    <p>
+		      <input ng-model="challenge.type" value="Right Hand" class="with-gap" name="gameType" type="radio" id="rightHandGame"  />
+		      <label for="rightHandGame">For Right Hand</label>
+		    </p>
+	    </div>
+	</div>
+	<div class="row">
+		<p class="flow-text center-align">Click to add to Sequence:</p>
+	</div>
+	<div class="row">
+		<a ng-click="add1Tile()">
+	    	<div class="col s2 offset-s1 card-panel tile green accent-3">
+	    		<i class="material-icons buttonLabel">add</i><p class="flow-text buttonLabel">1</p>
+			</div>
+		</a>
+		<a ng-click="add2Tile()">
+	    	<div class="col s2 card-panel tile yellow">
+	    		<i class="material-icons buttonLabel">add</i><p class="flow-text buttonLabel">2</p>
+			</div>
+		</a>
+		<a ng-click="add3Tile()">
+	    	<div class="col s2 card-panel tile cyan">
+	    		<i class="material-icons buttonLabel">add</i><p class="flow-text buttonLabel">3</p>
+			</div>
+		</a>
+		<a ng-click="add4Tile()">
+	    	<div class="col s2 card-panel tile red darken-1">
+	    		<i class="material-icons buttonLabel">add</i><p class="flow-text buttonLabel">4</p>
+			</div>
+		</a>
+		<a ng-click="add5Tile()">
+	    	<div class="col s2 card-panel tile deep-purple accent-1">
+	    		<i class="material-icons buttonLabel">add</i><p class="flow-text buttonLabel">5</p>
+			</div>
+		</a>
+	</div>
+	<div class="row">
+		<p class="flow-text center-align">Your Sequence (click to delete)</p>
+	</div>
+	<div class="row">
+		<div class="container">
+			<a ng-click="removeTile($index)" ng-repeat="item in challenge.tileOrder track by $index">
+	        	<div class="col s1 card-panel tile {{item.color}}">
+					<p class="flow-text center-align buttonLabel">{{item.value}}</p>
+				</div>
+			</a>
+		</div>
+	</div>
+	<div class="row center-align">
+		<button ng-click="editChallenge()" class="btn btn-flat waves-effect waves-green">Edit Challenge</button>
+		<button ng-click="deleteChallenge()" class="btn btn-flat waves-effect waves-red">Delete Challenge</button>
+	</div>
+</div>
