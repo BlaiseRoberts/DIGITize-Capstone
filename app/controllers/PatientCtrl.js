@@ -17,11 +17,11 @@ app.controller('PatientCtrl', function ($scope, AuthFactory, ProfileFactory, $ro
 	ProfileFactory.getSingleProfile(user).then((result)=>{
 		let profileId = Object.keys(result)[0];
 		$scope.profile = result[profileId];
-		$scope.patient = $scope.profile.patients[$routeParams.index];
+		$scope.patient = $scope.profile.patients[$routeParams.patientIndex];
 	});
 
 	$scope.removePatient = ()=>{
-		$scope.profile.patients.splice($routeParams.index, 1);
+		$scope.profile.patients.splice($routeParams.patientIndex, 1);
 		ProfileFactory.updateProfile($scope.profile.id, $scope.profile).then(()=>{
 			$window.location.href = "#!/profile";
 		});
@@ -30,7 +30,7 @@ app.controller('PatientCtrl', function ($scope, AuthFactory, ProfileFactory, $ro
 	$scope.editPatient = ()=>{
 		$scope.profile.patients[$routeParams.index] = $scope.patient;
 		ProfileFactory.updateProfile($scope.profile.id, $scope.profile).then(()=>{
-			$scope.patient = $scope.profile.patients[$routeParams.index];
+			$scope.patient = $scope.profile.patients[$routeParams.patientIndex];
 		});
 	};
 
