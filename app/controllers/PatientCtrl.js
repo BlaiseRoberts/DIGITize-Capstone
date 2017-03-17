@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller('PatientCtrl', function ($scope, AuthFactory, ProfileFactory, $routeParams, $window) {
+app.controller('PatientCtrl', function ($scope, AuthFactory, ProfileFactory, $routeParams, $window, GameFactory) {
 ///////////////////
 ///Initialize
 ///////////////////
@@ -18,6 +18,10 @@ app.controller('PatientCtrl', function ($scope, AuthFactory, ProfileFactory, $ro
 		let profileId = Object.keys(result)[0];
 		$scope.profile = result[profileId];
 		$scope.patient = $scope.profile.patients[$routeParams.patientIndex];
+		$scope.patient.index = $routeParams.patientIndex;
+		if(!$scope.patient.games){
+			$scope.patient.games = [];
+		}
 	});
 
 	$scope.removePatient = ()=>{
@@ -32,6 +36,10 @@ app.controller('PatientCtrl', function ($scope, AuthFactory, ProfileFactory, $ro
 		ProfileFactory.updateProfile($scope.profile.id, $scope.profile).then(()=>{
 			$scope.patient = $scope.profile.patients[$routeParams.patientIndex];
 		});
+	};
+	$scope.sendPatient = ()=>{
+		console.log("sending patient");
+		GameFactory.setPatient($scope.patient);
 	};
 
 

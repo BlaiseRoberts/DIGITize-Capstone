@@ -28,7 +28,11 @@ app.config(['$routeProvider', function ($routeProvider) {
     }).
     when('/challenges/test/:gameIndex',{
         templateUrl: 'partials/freeplay.html',
-        controller: "FreeplayCtrl"
+        controller: "TestCtrl"
+    }).
+    when('/patient/challenge/:gameIndex',{
+        templateUrl: 'partials/freeplay.html',
+        controller: "PatientPlayCtrl"
     }).
     // when('/search',{
     //     templateUrl: 'partials/search.html',

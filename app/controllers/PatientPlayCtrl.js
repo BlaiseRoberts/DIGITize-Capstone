@@ -1,13 +1,19 @@
 "use strict";
 	
-app.controller('FreeplayCtrl', function ($scope, $document, AuthFactory, ProfileFactory, $routeParams) {
+app.controller('PatientPlayCtrl', function ($scope, $document, AuthFactory, ProfileFactory, $routeParams, GameFactory) {
 ///////////////////
 ///Initialize
 ///////////////////
 	$document.ready(function(){
-		$('.modal').modal();
+		$('.modal').modal({dismissible: false});
 	});	
 
+	//sets up patient and prepares empty array to store game info
+	$scope.patient = GameFactory.getPatient(); 
+	if (!$scope.patient.games){
+		$scope.patient.games = [];
+	}
+	let OriginalOrder = [];
 	let user = AuthFactory.getUser();
 	ProfileFactory.getSingleProfile(user).then((result)=>{
 		let profileId = Object.keys(result)[0];
@@ -15,7 +21,36 @@ app.controller('FreeplayCtrl', function ($scope, $document, AuthFactory, Profile
 		$scope.challenge = $scope.profile.challenges[$routeParams.gameIndex];
 		$scope.tileOrder = $scope.challenge.tileOrder;
 		$scope.total = $scope.tileOrder.length;
+		$scope.game = {
+			title: $scope.challenge.title,
+			type: $scope.challenge.type,
+			totalTiles: $scope.total,
+			date: Date()
+		};
+		
+
 	});
+
+
+	let calculate = ()=>{
+		//finish calculating results and push to $scope.patient
+			$scope.percent = Math.floor(($scope.correct/$scope.total)*100);
+			$scope.game.correct = $scope.correct;
+			$scope.game.percent = $scope.percent;
+			$scope.patient.games.push($scope.game);
+	};
+	let postResults = ()=>{
+		//reset challenge to full array and update profile with patient progress
+			ProfileFactory.getSingleProfile(user).then((result)=>{
+				let profileId = Object.keys(result)[0];
+				$scope.profile = result[profileId];
+				$scope.profile.patients[$scope.patient.index] = $scope.patient;
+				ProfileFactory.updateProfile($scope.profile.id, $scope.profile).then(()=>{
+					$('#patientComplete').modal('open');
+				});
+			});
+	};
+	
 
 	
 	$scope.showKeys = false;
@@ -35,8 +70,8 @@ app.controller('FreeplayCtrl', function ($scope, $document, AuthFactory, Profile
 		}
 		$scope.tileOrder.shift();
 		if($scope.tileOrder.length === 0){
-			$scope.percent = ($scope.correct/$scope.total)*100;
-			$('#completeModal').modal('open');
+			calculate();
+			postResults();		
 		}
 	};
 	$scope.press2 = ()=>{
@@ -45,8 +80,8 @@ app.controller('FreeplayCtrl', function ($scope, $document, AuthFactory, Profile
 		}
 		$scope.tileOrder.shift();
 		if($scope.tileOrder.length === 0){
-			$scope.percent = ($scope.correct/$scope.total)*100;
-			$('#completeModal').modal('open');
+			calculate();
+			postResults();	
 		}
 	};
 	$scope.press3 = ()=>{
@@ -55,8 +90,8 @@ app.controller('FreeplayCtrl', function ($scope, $document, AuthFactory, Profile
 		}
 		$scope.tileOrder.shift();
 		if($scope.tileOrder.length === 0){
-			$scope.percent = ($scope.correct/$scope.total)*100;
-			$('#completeModal').modal('open');
+			calculate();
+			postResults();	
 		}
 	};
 	$scope.press4 = ()=>{
@@ -65,8 +100,8 @@ app.controller('FreeplayCtrl', function ($scope, $document, AuthFactory, Profile
 		}
 		$scope.tileOrder.shift();
 		if($scope.tileOrder.length === 0){
-			$scope.percent = ($scope.correct/$scope.total)*100;
-			$('#completeModal').modal('open');
+			calculate();
+			postResults();	
 		}
 	};
 	$scope.press5 = ()=>{
@@ -75,8 +110,8 @@ app.controller('FreeplayCtrl', function ($scope, $document, AuthFactory, Profile
 		}
 		$scope.tileOrder.shift();
 		if($scope.tileOrder.length === 0){
-			$scope.percent = Math.floor(($scope.correct/$scope.total)*100);
-			$('#completeModal').modal('open');
+			calculate();
+			postResults();	
 		}
 	};
 	$scope.keyPress = function(e){
