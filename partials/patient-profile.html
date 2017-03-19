@@ -8,6 +8,19 @@
 			<button ng-click="removePatient()" class="btn btn-flat waves-effect waves-red">Remove Patient</button>
 		</div>
 	</div>
+	<div class="col s12 card-panel hoverable red lighten-2">
+		<ul class="collection">
+	        <li ng-repeat="item in profile.challenges" class="collection-item">{{item.title}} for {{item.type}}<a ng-click="sendPatient()" ng-href="#!/patient/challenge/{{$index}}" class="secondary-content" ><i class="material-icons circle red lighten-4 buttonLabel">play_arrow</i></a><li>
+	    </ul>
+
+	</div>
+	<div class="card-panel hoverable deep-purple lighten-5">
+		<ul class="collection">
+	      <li ng-repeat="item in patient.games" class="collection-item">{{item.title}} for {{item.type}}: scored {{item.percent}}% or {{item.correct}}/{{item.totalTiles}} - {{item.date}}</li>
+	    </ul>
+	</div>
+
+
 </div>
 
 <div id="editPatient" class="modal modal-fixed-footer">

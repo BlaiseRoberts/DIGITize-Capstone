@@ -1,21 +1,35 @@
 "use strict";
 	
-app.controller('FreeplayCtrl', function ($scope, $document, AuthFactory, ProfileFactory, $routeParams) {
+app.controller('TestCtrl', function ($scope, $document, AuthFactory, ProfileFactory, $routeParams, GameFactory) {
 ///////////////////
 ///Initialize
 ///////////////////
 	$document.ready(function(){
-		$('.modal').modal();
+		$('.modal').modal({dismissible: false});
 	});	
 
+	//sets up patient and prepares empty array to store game info
+	let originalOrder = [];
 	let user = AuthFactory.getUser();
 	ProfileFactory.getSingleProfile(user).then((result)=>{
 		let profileId = Object.keys(result)[0];
+
+		//set up variables
 		$scope.profile = result[profileId];
 		$scope.challenge = $scope.profile.challenges[$routeParams.gameIndex];
+		originalOrder = $scope.challenge.tileOrder;
 		$scope.tileOrder = $scope.challenge.tileOrder;
 		$scope.total = $scope.tileOrder.length;
+		$scope.game = {
+			title: $scope.challenge.title,
+			type: $scope.challenge.type,
+			totalTiles: $scope.total,
+			date: Date()
+		};
+
 	});
+
+
 
 	
 	$scope.showKeys = false;
@@ -35,7 +49,7 @@ app.controller('FreeplayCtrl', function ($scope, $document, AuthFactory, Profile
 		}
 		$scope.tileOrder.shift();
 		if($scope.tileOrder.length === 0){
-			$scope.percent = ($scope.correct/$scope.total)*100;
+			$scope.percent = Math.floor(($scope.correct/$scope.total)*100);
 			$('#completeModal').modal('open');
 		}
 	};
@@ -45,7 +59,7 @@ app.controller('FreeplayCtrl', function ($scope, $document, AuthFactory, Profile
 		}
 		$scope.tileOrder.shift();
 		if($scope.tileOrder.length === 0){
-			$scope.percent = ($scope.correct/$scope.total)*100;
+			$scope.percent = Math.floor(($scope.correct/$scope.total)*100);
 			$('#completeModal').modal('open');
 		}
 	};
@@ -55,7 +69,7 @@ app.controller('FreeplayCtrl', function ($scope, $document, AuthFactory, Profile
 		}
 		$scope.tileOrder.shift();
 		if($scope.tileOrder.length === 0){
-			$scope.percent = ($scope.correct/$scope.total)*100;
+			$scope.percent = Math.floor(($scope.correct/$scope.total)*100);
 			$('#completeModal').modal('open');
 		}
 	};
@@ -65,7 +79,7 @@ app.controller('FreeplayCtrl', function ($scope, $document, AuthFactory, Profile
 		}
 		$scope.tileOrder.shift();
 		if($scope.tileOrder.length === 0){
-			$scope.percent = ($scope.correct/$scope.total)*100;
+			$scope.percent = Math.floor(($scope.correct/$scope.total)*100);
 			$('#completeModal').modal('open');
 		}
 	};

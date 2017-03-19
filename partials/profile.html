@@ -2,7 +2,7 @@
 	<div class="card-panel hoverable deep-purple lighten-3">
 		<h1>Welcome {{profile.firstName}} {{profile.lastName}}</h1>
 		<h3 class="right-align" ng-show="profile.location">{{profile.discipline}} at {{profile.location}}</h3>
-		<button data-target="editProfileModal" class="modal-trigger btn waves-effect waves-light">Edit Profile</buttom>
+		<button data-target="editProfileModal" class="modal-trigger btn btn-flat waves-effect waves-green">Edit Profile</buttom>
 	</div>
 	<div>
 		<ul class="collection with-header">
@@ -11,7 +11,6 @@
 	        <li class="collection-item" ng-repeat="item in profile.patients"><div>{{item.room}} on {{item.dateAdmit}}<a href="#!/patient/{{$index}}" class="secondary-content"><i class="material-icons">details</i></a></div></li>
       	</ul>
 	</div>
-	<a href="#!/freeplay" class="btn btn-flat waves-effect waves-green">Free Play</a>
 </div>
 
 

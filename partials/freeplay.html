@@ -8,8 +8,9 @@
 		</div>
 	</div>
 
-	<div id="tileOrder" class="row">	
-		<div ng-repeat="item in tileOrder" class="col s1 card-panel tile {{item.color}}">
+	<div id="tileOrder" class="row">
+		<p class="flow-text center-align">Press the button below that matches the current tile</p>	
+		<div ng-repeat="item in tileOrder" ng-show="$index === 0" class="col s4 offset-s4 card-panel gameTile {{item.color}}">
 			<p class="flow-text center-align ">{{item.value}}</p>
 		</div>
 	</div>
@@ -77,6 +78,17 @@
     </div>
     <div class="modal-footer">
       <a href="#!/challenges" class=" modal-action modal-close waves-effect waves-green btn-flat">Finished</a>
+    </div>
+  </div>
+
+  <div id="patientComplete" class="modal">
+    <div class="modal-content">
+      <h4>Challenge Complete</h4>
+      <p>You got {{correct}} out of {{total}} or {{percent}}%</p>
+
+    </div>
+    <div class="modal-footer">
+      <a href="javascript:history.back()" class=" modal-action modal-close waves-effect waves-green btn-flat">Finished</a>
     </div>
   </div>
 </div>
