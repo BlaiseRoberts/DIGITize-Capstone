@@ -66,7 +66,11 @@ app.controller('PatientPlayCtrl', function ($scope, $document, AuthFactory, Prof
 
 	$scope.press1 = ()=>{
 		if($scope.tileOrder[0].value == 1){
+  			Materialize.toast('You did it!', 3000, 'green lighten-2'); 
 			$scope.correct++;
+		}
+		if($scope.tileOrder[0].value != 1){
+  			Materialize.toast('Keep Trying!', 3000, 'light-blue darken-4'); 			
 		}
 		$scope.tileOrder.shift();
 		if($scope.tileOrder.length === 0){
@@ -76,7 +80,11 @@ app.controller('PatientPlayCtrl', function ($scope, $document, AuthFactory, Prof
 	};
 	$scope.press2 = ()=>{
 		if($scope.tileOrder[0].value == 2){
+  			Materialize.toast('You did it!', 3000, 'green lighten-2'); 			
 			$scope.correct++;
+		}
+		if($scope.tileOrder[0].value != 2){
+  			Materialize.toast('Keep Trying!', 3000, 'light-blue darken-4'); 			
 		}
 		$scope.tileOrder.shift();
 		if($scope.tileOrder.length === 0){
@@ -86,7 +94,11 @@ app.controller('PatientPlayCtrl', function ($scope, $document, AuthFactory, Prof
 	};
 	$scope.press3 = ()=>{
 		if($scope.tileOrder[0].value == 3){
+  			Materialize.toast('You did it!', 3000, 'green lighten-2'); 			
 			$scope.correct++;
+		}
+		if($scope.tileOrder[0].value != 3){
+  			Materialize.toast('Keep Trying!', 3000, 'light-blue darken-4'); 			
 		}
 		$scope.tileOrder.shift();
 		if($scope.tileOrder.length === 0){
@@ -96,7 +108,11 @@ app.controller('PatientPlayCtrl', function ($scope, $document, AuthFactory, Prof
 	};
 	$scope.press4 = ()=>{
 		if($scope.tileOrder[0].value == 4){
+  			Materialize.toast('You did it!', 3000, 'green lighten-2'); 			
 			$scope.correct++;
+		}
+		if($scope.tileOrder[0].value != 4){
+  			Materialize.toast('Keep Trying!', 3000, 'light-blue darken-4'); 			
 		}
 		$scope.tileOrder.shift();
 		if($scope.tileOrder.length === 0){
@@ -106,7 +122,11 @@ app.controller('PatientPlayCtrl', function ($scope, $document, AuthFactory, Prof
 	};
 	$scope.press5 = ()=>{
 		if($scope.tileOrder[0].value == 5){
+  			Materialize.toast('You did it!', 3000, 'green lighten-2'); 			
 			$scope.correct++;
+		}
+		if($scope.tileOrder[0].value != 5){
+  			Materialize.toast('Keep Trying!', 3000, 'light-blue darken-4'); 			
 		}
 		$scope.tileOrder.shift();
 		if($scope.tileOrder.length === 0){

@@ -8,8 +8,9 @@
 		</div>
 	</div>
 
-	<div id="tileOrder" class="row">	
-		<div ng-repeat="item in tileOrder" class="col s1 card-panel tile {{item.color}}">
+	<div id="tileOrder" class="row">
+		<p class="flow-text center-align">Press the button below that matches the current tile</p>	
+		<div ng-repeat="item in tileOrder" ng-show="$index === 0" class="col s4 offset-s4 card-panel gameTile {{item.color}}">
 			<p class="flow-text center-align ">{{item.value}}</p>
 		</div>
 	</div>
