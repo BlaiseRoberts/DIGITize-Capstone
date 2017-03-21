@@ -6,7 +6,7 @@
 	</div>
 	<div>
 		<ul class="collection with-header">
-	        <li class="collection-header"><h4>Patients</h4></li>
+	        <li class="collection-header teal lighten-3"><h4>Patients</h4></li>
 	        <li class="collection-item"><div>Add New Patient<button id="add-patient" data-target="addPatientModal" class="btn btn-flat"><i class="material-icons">add</i></button></div></li>
 	        <li class="collection-item" ng-repeat="item in profile.patients"><div>{{item.room}} on {{item.dateAdmit}}<a href="#!/patient/{{$index}}" class="secondary-content"><i class="material-icons">details</i></a></div></li>
       	</ul>

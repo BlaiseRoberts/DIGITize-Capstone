@@ -9,7 +9,7 @@ app.controller('PatientCtrl', function ($scope, AuthFactory, ProfileFactory, $ro
 	$('ul.tabs').tabs();
 	$('.datepicker').pickadate({
 	    selectMonths: true, // Creates a dropdown to control month
-	    selectYears: 5 // Creates a dropdown of 5 years to control year
+	    selectYears: 2 // Creates a dropdown of 5 years to control year
 	  });
 	});
 
