@@ -14,7 +14,24 @@
 	    </ul>
 
 	</div>
-	<div class="card-panel hoverable deep-purple lighten-5">
+	<div class="col s12">
+	  <ul id="tabs-swipe-demo" class="tabs">
+	    <li class="tab col s3"><a href="#chart">Overview</a></li>
+	    <li class="tab col s3"><a class="active" href="#details">Details</a></li>
+	  </ul>
+	</div>
+	<div id="chart" class="car-panel hoverable blue-grey lighten-5">
+		<canvas id="patientChart" width="200" height="200"></canvas>
+	</div>
+
+
+
+
+
+
+
+			<!-- Details -->
+	<div id="details" class="card-panel hoverable deep-purple lighten-5">
 		<ul class="collection">
 	      <li ng-repeat="item in patient.games" class="collection-item">{{item.title}} for {{item.type}}: scored {{item.percent}}% or {{item.correct}}/{{item.totalTiles}} - {{item.date}}</li>
 	    </ul>
@@ -23,6 +40,12 @@
 
 </div>
 
+
+
+
+
+
+				<!-- Modal -->
 <div id="editPatient" class="modal modal-fixed-footer">
 		<div class="modal-content">
 		  <form>

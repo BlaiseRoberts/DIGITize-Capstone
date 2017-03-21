@@ -5,6 +5,8 @@ var app = angular.module("RehabApp", ["ngRoute", "angular.filter", "angular-load
 app.config(['$routeProvider', function ($routeProvider) {
     $routeProvider.
     when('/', {
+        templateUrl: 'partials/home.html',
+        controller: "HomeCtrl"
     }).
     when('/profile',{
         templateUrl: 'partials/profile.html',
