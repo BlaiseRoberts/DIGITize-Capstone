@@ -1,3 +1,7 @@
+.modal {
+  width: 90% !important;
+  max-height: 100% !important; }
+
 .card-panel {
   line-height: 0; }
 

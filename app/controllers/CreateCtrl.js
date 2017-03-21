@@ -9,6 +9,8 @@ app.controller('CreateCtrl', function ($scope, AuthFactory, ProfileFactory, $win
 	    $('ul.tabs').tabs();
 	  });
 
+
+	
 	let user = AuthFactory.getUser();
 
 	ProfileFactory.getSingleProfile(user).then((result)=>{
