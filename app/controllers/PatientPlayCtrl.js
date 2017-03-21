@@ -64,12 +64,28 @@ app.controller('PatientPlayCtrl', function ($scope, $document, AuthFactory, Prof
 		}
 	};
 
+////////////////////
+//////Sounds on Buttons
+////////////////////
+
+	var audio1 = new Audio('sound/1effect.m4a');
+	var audio2 = new Audio('sound/2effect.m4a');
+	var audio3 = new Audio('sound/3effect.m4a');
+	var audio4 = new Audio('sound/4effect.m4a');
+	var audio5 = new Audio('sound/5effect.m4a');
+	var missAudio = new Audio('sound/bassDelete.m4a');
+
+
 	$scope.press1 = ()=>{
 		if($scope.tileOrder[0].value == 1){
+			let sound = audio1.cloneNode();
+			sound.play();
   			Materialize.toast('You did it!', 3000, 'green lighten-2'); 
 			$scope.correct++;
 		}
 		if($scope.tileOrder[0].value != 1){
+			let sound = missAudio.cloneNode();
+			sound.play();
   			Materialize.toast('Keep Trying!', 3000, 'light-blue darken-4'); 			
 		}
 		$scope.tileOrder.shift();
@@ -80,10 +96,14 @@ app.controller('PatientPlayCtrl', function ($scope, $document, AuthFactory, Prof
 	};
 	$scope.press2 = ()=>{
 		if($scope.tileOrder[0].value == 2){
+			let sound = audio2.cloneNode();
+			sound.play();
   			Materialize.toast('You did it!', 3000, 'green lighten-2'); 			
 			$scope.correct++;
 		}
 		if($scope.tileOrder[0].value != 2){
+			let sound = missAudio.cloneNode();
+			sound.play();
   			Materialize.toast('Keep Trying!', 3000, 'light-blue darken-4'); 			
 		}
 		$scope.tileOrder.shift();
@@ -94,10 +114,14 @@ app.controller('PatientPlayCtrl', function ($scope, $document, AuthFactory, Prof
 	};
 	$scope.press3 = ()=>{
 		if($scope.tileOrder[0].value == 3){
+			let sound = audio3.cloneNode();
+			sound.play();
   			Materialize.toast('You did it!', 3000, 'green lighten-2'); 			
 			$scope.correct++;
 		}
 		if($scope.tileOrder[0].value != 3){
+			let sound = missAudio.cloneNode();
+			sound.play();
   			Materialize.toast('Keep Trying!', 3000, 'light-blue darken-4'); 			
 		}
 		$scope.tileOrder.shift();
@@ -108,10 +132,14 @@ app.controller('PatientPlayCtrl', function ($scope, $document, AuthFactory, Prof
 	};
 	$scope.press4 = ()=>{
 		if($scope.tileOrder[0].value == 4){
+			let sound = audio4.cloneNode();
+			sound.play();
   			Materialize.toast('You did it!', 3000, 'green lighten-2'); 			
 			$scope.correct++;
 		}
 		if($scope.tileOrder[0].value != 4){
+			let sound = missAudio.cloneNode();
+			sound.play();
   			Materialize.toast('Keep Trying!', 3000, 'light-blue darken-4'); 			
 		}
 		$scope.tileOrder.shift();
@@ -122,10 +150,14 @@ app.controller('PatientPlayCtrl', function ($scope, $document, AuthFactory, Prof
 	};
 	$scope.press5 = ()=>{
 		if($scope.tileOrder[0].value == 5){
+			let sound = audio5.cloneNode();
+			sound.play();
   			Materialize.toast('You did it!', 3000, 'green lighten-2'); 			
 			$scope.correct++;
 		}
 		if($scope.tileOrder[0].value != 5){
+			let sound = missAudio.cloneNode();
+			sound.play();
   			Materialize.toast('Keep Trying!', 3000, 'light-blue darken-4'); 			
 		}
 		$scope.tileOrder.shift();
@@ -139,16 +171,16 @@ app.controller('PatientPlayCtrl', function ($scope, $document, AuthFactory, Prof
         	e.preventDefault();
        		$scope.press1();
 	    }
-	    if (e.keyCode == 84) { 
+	    if ((e.keyCode == 84 && $scope.challenge.type == "Right Hand") || (e.keyCode == 89 && $scope.challenge.type == "Left Hand")) { 
 	       $scope.press2();
 	    }
-	    if (e.keyCode == 55) { 
+	    if ((e.keyCode == 55 && $scope.challenge.type == "Right Hand") || (e.keyCode == 53 && $scope.challenge.type == "Left Hand")) { 
 	       $scope.press3();
 	    }
-	    if (e.keyCode == 73) { 
+	    if ((e.keyCode == 73 && $scope.challenge.type == "Right Hand") || (e.keyCode == 69 && $scope.challenge.type == "Left Hand")) { 
 	       $scope.press4();
 	    }
-	    if (e.keyCode == 76) { 
+	    if ((e.keyCode == 76 && $scope.challenge.type == "Right Hand") || (e.keyCode == 83 && $scope.challenge.type == "Left Hand")) { 
 	       $scope.press5();
 	    }
 	};

@@ -27,6 +27,7 @@
     "sass": "^0.5.0"
   },
   "dependencies": {
+    "angular-audio": "^1.7.3",
     "angular-filter": "^0.5.15"
   }
 }
