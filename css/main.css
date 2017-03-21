@@ -10,6 +10,9 @@
 #testChallenge {
   margin-left: 1em; }
 
+#chart {
+  height: 25em; }
+
 .tile {
   height: 4em;
   margin: .5em;
