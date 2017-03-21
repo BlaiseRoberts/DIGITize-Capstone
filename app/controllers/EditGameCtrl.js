@@ -14,7 +14,6 @@ app.controller('EditGameCtrl', function ($scope, AuthFactory, ProfileFactory, $r
 		let profileId = Object.keys(result)[0];
 		$scope.profile = result[profileId];
 		$scope.challenge = $scope.profile.challenges[$routeParams.gameIndex];
-		
 	});
 
 	let tile1 = {value: 1, color: "green accent-3"};

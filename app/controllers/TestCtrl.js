@@ -43,7 +43,23 @@ app.controller('TestCtrl', function ($scope, $document, AuthFactory, ProfileFact
 		}
 	};
 
+////////////////////
+//////Sounds on Buttons
+////////////////////
+
+	var audio1 = new Audio('sound/1effectshort.wav');
+	var audio2 = new Audio('sound/2effect.m4a');
+	var audio3 = new Audio('sound/3effect.m4a');
+	var audio4 = new Audio('sound/4effect.m4a');
+	var audio5 = new Audio('sound/5effect.m4a');
+
+
+
+
+
 	$scope.press1 = ()=>{
+		let sound = audio1.cloneNode();
+		sound.play();
 		if($scope.tileOrder[0].value == 1){
 			$scope.correct++;
 		}
@@ -54,6 +70,8 @@ app.controller('TestCtrl', function ($scope, $document, AuthFactory, ProfileFact
 		}
 	};
 	$scope.press2 = ()=>{
+		let sound = audio2.cloneNode();
+		sound.play();
 		if($scope.tileOrder[0].value == 2){
 			$scope.correct++;
 		}
@@ -64,6 +82,8 @@ app.controller('TestCtrl', function ($scope, $document, AuthFactory, ProfileFact
 		}
 	};
 	$scope.press3 = ()=>{
+		let sound = audio3.cloneNode();
+		sound.play();
 		if($scope.tileOrder[0].value == 3){
 			$scope.correct++;
 		}
@@ -74,6 +94,8 @@ app.controller('TestCtrl', function ($scope, $document, AuthFactory, ProfileFact
 		}
 	};
 	$scope.press4 = ()=>{
+		let sound = audio4.cloneNode();
+		sound.play();
 		if($scope.tileOrder[0].value == 4){
 			$scope.correct++;
 		}
@@ -84,6 +106,8 @@ app.controller('TestCtrl', function ($scope, $document, AuthFactory, ProfileFact
 		}
 	};
 	$scope.press5 = ()=>{
+		let sound = audio5.cloneNode();
+		sound.play();
 		if($scope.tileOrder[0].value == 5){
 			$scope.correct++;
 		}
@@ -98,16 +122,16 @@ app.controller('TestCtrl', function ($scope, $document, AuthFactory, ProfileFact
         	e.preventDefault();
        		$scope.press1();
 	    }
-	    if (e.keyCode == 84) { 
+	    if ((e.keyCode == 84 && $scope.challenge.type == "Right Hand") || (e.keyCode == 89 && $scope.challenge.type == "Left Hand")) { 
 	       $scope.press2();
 	    }
-	    if (e.keyCode == 55) { 
+	    if ((e.keyCode == 55 && $scope.challenge.type == "Right Hand") || (e.keyCode == 53 && $scope.challenge.type == "Left Hand")) { 
 	       $scope.press3();
 	    }
-	    if (e.keyCode == 73) { 
+	    if ((e.keyCode == 73 && $scope.challenge.type == "Right Hand") || (e.keyCode == 69 && $scope.challenge.type == "Left Hand")) { 
 	       $scope.press4();
 	    }
-	    if (e.keyCode == 76) { 
+	    if ((e.keyCode == 76 && $scope.challenge.type == "Right Hand") || (e.keyCode == 83 && $scope.challenge.type == "Left Hand")) { 
 	       $scope.press5();
 	    }
 	};
