@@ -8,6 +8,7 @@ app.controller('PatientPlayCtrl', function ($scope, $document, AuthFactory, Prof
 		$('.modal').modal({dismissible: false});
 	});	
 
+
 	//sets up patient and prepares empty array to store game info
 	$scope.patient = GameFactory.getPatient(); 
 	if (!$scope.patient.games){
@@ -19,6 +20,7 @@ app.controller('PatientPlayCtrl', function ($scope, $document, AuthFactory, Prof
 		let profileId = Object.keys(result)[0];
 		$scope.profile = result[profileId];
 		$scope.challenge = $scope.profile.challenges[$routeParams.gameIndex];
+		$scope.challenge.message = "Press the button below that matches the current tile";		
 		$scope.tileOrder = $scope.challenge.tileOrder;
 		$scope.total = $scope.tileOrder.length;
 		$scope.game = {

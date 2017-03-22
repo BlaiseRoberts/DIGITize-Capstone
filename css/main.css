@@ -1,3 +1,9 @@
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Abel", sans-serif; }
+
+p, li, a, button, label {
+  font-family: "Lato", sans-serif; }
+
 .modal {
   width: 90% !important;
   max-height: 100% !important; }
@@ -45,7 +51,7 @@
 .nopad {
   padding: 0 !important; }
 
-#title-label {
+.title-label {
   line-height: 1.5em; }
 
 /*# sourceMappingURL=main.css.map */
