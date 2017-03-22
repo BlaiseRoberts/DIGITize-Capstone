@@ -2,6 +2,21 @@
 
 var app = angular.module("RehabApp", ["ngRoute", "angular.filter", "angular-loading-bar"]);
 
+
+let isAuth = (AuthFactory) => new Promise ( (resolve, reject) => {
+  // console.log("running isAuth");
+    AuthFactory.isAuthenticated()
+    .then ( (userExists) => {
+        if (userExists){
+            resolve();
+        }else {
+            reject();
+        }
+    });
+});
+
+
+
 app.config(['$routeProvider', function ($routeProvider) {
     $routeProvider.
     when('/', {
@@ -10,11 +25,13 @@ app.config(['$routeProvider', function ($routeProvider) {
     }).
     when('/profile',{
         templateUrl: 'partials/profile.html',
-        controller: "ProfileCtrl"
+        controller: "ProfileCtrl",
+        resolve: {isAuth}
     }).
     when('/patient/:patientIndex',{
         templateUrl: 'partials/patient-profile.html',
-        controller: "PatientCtrl"
+        controller: "PatientCtrl",
+        resolve: {isAuth}
     }).
     when('/freeplay',{
         templateUrl: 'partials/freeplay.html',
@@ -22,19 +39,23 @@ app.config(['$routeProvider', function ($routeProvider) {
     }).
     when('/challenges',{
         templateUrl: 'partials/create.html',
-        controller: "CreateCtrl"
+        controller: "CreateCtrl",
+        resolve: {isAuth}
     }).
     when('/challenges/edit/:gameIndex',{
         templateUrl: 'partials/edit-game.html',
-        controller: "EditGameCtrl"
+        controller: "EditGameCtrl",
+        resolve: {isAuth}
     }).
     when('/challenges/test/:gameIndex',{
         templateUrl: 'partials/freeplay.html',
-        controller: "TestCtrl"
+        controller: "TestCtrl",
+        resolve: {isAuth}
     }).
     when('/patient/challenge/:gameIndex',{
         templateUrl: 'partials/freeplay.html',
-        controller: "PatientPlayCtrl"
+        controller: "PatientPlayCtrl",
+        resolve: {isAuth}
     }).
     // when('/search',{
     //     templateUrl: 'partials/search.html',

@@ -8,6 +8,8 @@ app.controller('TestCtrl', function ($scope, $document, AuthFactory, ProfileFact
 		$('.modal').modal({dismissible: false});
 	});	
 
+
+
 	//sets up patient and prepares empty array to store game info
 	let originalOrder = [];
 	let user = AuthFactory.getUser();
@@ -17,6 +19,7 @@ app.controller('TestCtrl', function ($scope, $document, AuthFactory, ProfileFact
 		//set up variables
 		$scope.profile = result[profileId];
 		$scope.challenge = $scope.profile.challenges[$routeParams.gameIndex];
+		$scope.challenge.message = "Press the button below that matches the current tile";
 		originalOrder = $scope.challenge.tileOrder;
 		$scope.tileOrder = $scope.challenge.tileOrder;
 		$scope.total = $scope.tileOrder.length;

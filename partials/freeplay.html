@@ -4,19 +4,33 @@
 		<p class="flow-text">{{challenge.title}} for {{challenge.type}}</p>
 		<p>by {{profile.firstName}} {{profile.lastName}}</p>
 		<audio src="/sound/rehab.m4a" type="audio/aac" onloadstart="this.volume=0.25" autoplay loop controls></audio>
+		<div class="row right-align" ng-show="challenge.test">
+			<div class="col s3 offset-s6">
+				<p>
+			      <input ng-model="challenge.type" value="Left Hand" class="with-gap" name="gameType" type="radio" id="leftHandGame"  />
+			      <label for="leftHandGame">For Left Hand</label>
+			    </p>
+			</div>
+			<div class="col s3">
+			    <p>
+			      <input ng-model="challenge.type" value="Right Hand" class="with-gap" name="gameType" type="radio" id="rightHandGame"  />
+			      <label for="rightHandGame">For Right Hand</label>
+			    </p>
+		    </div>
+		</div>
 		<div tabindex="1" ng-keyup="keyPress($event)" class="right-align">
 			<button ng-click="toggleKeys()" class="btn btn-flat waves-effect waves-yellow">click to use keyboard</button>
 		</div>
 	</div>
 
 	<div id="tileOrder" class="row">
-		<p class="flow-text center-align">Press the button below that matches the current tile</p>	
-		<div ng-repeat="item in tileOrder" ng-show="$index === 0" class="col s4 offset-s4 card-panel gameTile {{item.color}}">
+		<p class="flow-text center-align">{{challenge.message}}</p>	
+		<div ng-repeat="item in tileOrder track by $index" ng-show="$index === 0" class="col s4 offset-s4 card-panel gameTile {{item.color}}">
 			<p class="flow-text center-align ">{{item.value}}</p>
 		</div>
 	</div>
 </div>
-	<div ng-show="challenge.type == 'Right Hand'">
+	<div ng-show="challenge.type == 'Right Hand'" class="fade">
 		<div class="row">
 			<div class="nopad col s2 offset-s1">
 				<h4 class="center-align label">1</h4>
@@ -35,45 +49,35 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="nopad col s2 offset-s1">
 				<a ng-click="press1()">
-					<div class="gameButton green accent-3">
+					<div class="nopad col s2 offset-s1 waves-effect waves-light gameButton green accent-3">
 						<h4 ng-show="showKeys" class="flow-text buttonLabel center-align">"space"</h4>					
 					</div>
 				</a>
-			</div>
-			<div class="nopad col s2">
 				<a ng-click="press2()">
-					<div class="gameButton yellow">
+					<div class="nopad col s2 waves-effect waves-light gameButton yellow">
 						<h4 ng-show="showKeys" class="flow-text buttonLabel center-align">"T"</h4>					
 					</div>
 				</a>
-			</div>
-			<div class="nopad col s2">
 				<a ng-click="press3()">
-					<div class="gameButton cyan">
+					<div class="nopad col s2 waves-effect waves-light gameButton cyan">
 						<h4 ng-show="showKeys" class="flow-text buttonLabel center-align">"7"</h4>					
 					</div>
 				</a>
-			</div>
-			<div class="nopad col s2">
 				<a ng-click="press4()">
-					<div class="gameButton red darken-1">
+					<div class="nopad col s2 waves-effect waves-light gameButton red darken-1">
 						<h4 ng-show="showKeys" class="flow-text buttonLabel center-align">"I"</h4>					
 					</div>
 				</a>
-			</div>
-			<div class="nopad col s2">
 				<a ng-click="press5()">
-					<div class="gameButton deep-purple accent-1">
+					<div class="nopad col s2 waves-effect waves-light gameButton deep-purple accent-1">
 						<h4 ng-show="showKeys" class="flow-text buttonLabel center-align">"L"</h4>
 					</div>
 				</a>
-			</div>
 		</div>
 	</div>
 
-	<div ng-show="challenge.type == 'Left Hand'">
+	<div ng-show="challenge.type == 'Left Hand'" class="fade">
 		<div class="row">
 			<div class="nopad col s2 offset-s1">
 				<h4 class="center-align label">5</h4>
@@ -92,41 +96,31 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="nopad col s2 offset-s1">
 				<a ng-click="press5()">
-					<div class="gameButton deep-purple accent-1">
+					<div class="nopad col s2  offset-s1 waves-effect waves-light gameButton deep-purple accent-1">
 						<h4 ng-show="showKeys" class="flow-text buttonLabel center-align">"S"</h4>
 					</div>
 				</a>
-			</div>
-			<div class="nopad col s2">
 				<a ng-click="press4()">
-					<div class="gameButton red darken-1">
+					<div class="nopad col s2 waves-effect waves-light gameButton red darken-1">
 						<h4 ng-show="showKeys" class="flow-text buttonLabel center-align">"E"</h4>					
 					</div>
 				</a>
-			</div>
-			<div class="nopad col s2">
 				<a ng-click="press3()">
-					<div class="gameButton cyan">
+					<div class="nopad col s2 waves-effect waves-light gameButton cyan">
 						<h4 ng-show="showKeys" class="flow-text buttonLabel center-align">"5"</h4>					
 					</div>
 				</a>
-			</div>
-			<div class="nopad col s2">
 				<a ng-click="press2()">
-					<div class="gameButton yellow">
+					<div class="nopad col s2 waves-effect waves-light gameButton yellow">
 						<h4 ng-show="showKeys" class="flow-text buttonLabel center-align">"Y"</h4>					
 					</div>
 				</a>
-			</div>
-			<div class="nopad col s2">
 				<a ng-click="press1()">
-					<div class="gameButton green accent-3">
+					<div class="nopad col s2 waves-effect waves-light gameButton green accent-3">
 						<h4 ng-show="showKeys" class="flow-text buttonLabel center-align">"space"</h4>					
 					</div>
 				</a>
-			</div>
 		</div>
 	</div>
 

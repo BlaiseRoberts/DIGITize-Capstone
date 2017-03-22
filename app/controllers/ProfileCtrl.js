@@ -11,6 +11,9 @@ app.controller('ProfileCtrl', function ($scope, ProfileFactory, AuthFactory) {
 	    selectYears: 5 // Creates a dropdown of 15 years to control year
 	  });
 	});
+        
+
+
 
 	$scope.patient = {};
 	let user = AuthFactory.getUser();
