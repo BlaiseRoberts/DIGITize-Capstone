@@ -8,7 +8,7 @@
 		<div class="container">
 		  <div id="edit-challenge" class="col s12 card-panel hoverable red lighten-2">
 			<ul class="collection">
-		        <li ng-repeat="item in profile.challenges" class="collection-item">{{item.title}} for {{item.type}}<button id="testChallenge" ng-click="testChallenge($index)" class="btn btn-flat waves-effect waves-green">Test</button> <button ng-click="deleteChallenge($index)" class="btn btn-flat waves-effect waves-red">Delete</button><a ng-href="#!/challenges/edit/{{$index}}" class="secondary-content" ><i class="material-icons">edit</i></a><li>
+		        <li ng-repeat="item in profile.challenges" class="collection-item">{{item.title}} for {{item.type}}<a ng-click="deleteChallenge($index)" class="secondary-content btn btn-flat waves-effect waves-light"><i class="material-icons red-text lighten-2">delete</i></a><a id="testChallenge" ng-click="testChallenge($index)" class="secondary-content btn btn-flat waves-effect waves-green">Test</a><a ng-href="#!/challenges/edit/{{$index}}" class="btn btn-flat waves-effect waves-light" ><i class="material-icons teal-text">edit</i></a><li>
 		    </ul>
 			<div class="row center-align">
 				<a href="#!/freeplay" class="btn btn-flat waves-effect waves-green">Freeplay</a>
