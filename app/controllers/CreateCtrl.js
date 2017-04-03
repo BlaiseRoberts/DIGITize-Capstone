@@ -79,7 +79,7 @@ app.controller('CreateCtrl', function ($scope, AuthFactory, ProfileFactory, $win
 		ProfileFactory.updateProfile($scope.profile.id, $scope.profile).then(()=>{
 			$scope.challenge = {
 				title: null,
-				type: null,
+				type: "Right Hand",
 				tileOrder: []
 			};
 		});

@@ -33,7 +33,7 @@ app.controller('PatientCtrl', function ($scope, AuthFactory, ProfileFactory, $ro
 		$scope.attempts = [];
 		$scope.scores = [];
 		for (var i = 0; i < $scope.patient.games.length; i++) {
-			$scope.attempts.push((i+1));
+			$scope.attempts.push($scope.patient.games[i].date);
 			$scope.scores.push($scope.patient.games[i].percent);
 		}
 		var data = {
@@ -75,13 +75,13 @@ app.controller('PatientCtrl', function ($scope, AuthFactory, ProfileFactory, $ro
 				    yAxes: [{
 				      scaleLabel: {
 				        display: true,
-				        labelString: '% Complete'
+				        labelString: '% Accurate'
 				      }
 				    }],
 				    xAxes: [{
 				      scaleLabel: {
 				        display: true,
-				        labelString: 'Attempt #'
+				        labelString: 'Date'
 				      }
 				    }]
 				} 
@@ -103,7 +103,6 @@ app.controller('PatientCtrl', function ($scope, AuthFactory, ProfileFactory, $ro
 		});
 	};
 	$scope.sendPatient = ()=>{
-		console.log("sending patient");
 		GameFactory.setPatient($scope.patient);
 	};
 
