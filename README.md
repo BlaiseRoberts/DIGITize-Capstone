@@ -6,4 +6,4 @@ This application was built with AngularJS and Firebase.
 
 ## Setup Project
 This project is hosted on GitHub Pages.
-You can view the site at [blaiseroberts.github.io/rehab-app](blaiseroberts.github.io/rehab-app)
+You can view the site at [blaiseroberts.github.io/rehab-app](https://blaiseroberts.github.io/rehab-app/#!/)
